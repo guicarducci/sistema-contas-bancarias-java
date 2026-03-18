@@ -29,28 +29,47 @@ public class Program {
       acc = new Account(n, nome);
      }
      System.out.println();
-     acc.dadosDaConta();
+     System.out.print(acc);
+     System.out.println();
 
-     System.out.println("Deseja adicionar algum valor? y/n "); 
-     String confirmacao2 = sc.next();
-     if (confirmacao2.equalsIgnoreCase("y")) {
-      System.out.println("Insira o valor a ser depositado: ");
-      double valorDeposito = sc.nextDouble();
-      acc.depositar(valorDeposito);
+    int opcao = -1;
+    while (opcao != 0) {
       System.out.println();
-      acc.dadosDaConta();
-    } 
+      System.out.println("Digite qual opcao deseja: ");
+      System.out.println("1 - Depositar");
+      System.out.println("2 - Sacar");
+      System.out.println("3 - Ver dados");
+      System.out.println("0 - Sair");
+      opcao = sc.nextInt();
+      
+      if (opcao == 1) {
+        System.out.println("Digite o valor a ser depositado: ");
+        double valorDeposito = sc.nextDouble();
+        acc.depositar(valorDeposito);
+        System.out.print(acc);
+        System.out.println();
+      }
+      else if (opcao == 2) {
+        System.out.println("Digite o valor a sacar: ");
+        double valorSaque = sc.nextDouble();
+        acc.sacar(valorSaque);
+        System.out.print(acc);
+        System.out.println();
+      }
+      else if (opcao == 3) {
+        System.out.println("Estes sao os dados da conta: ");
+        System.out.print(acc);
+        System.out.println();
+      }
+      else if (opcao == 0) {
+        System.out.println("Encerrando sistema...");
+      }
+      else if (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 0) {
+        System.out.println("Erro! Opcao Invalida. ");
+      }
 
-     System.out.println("Deseja retirar algum valor da sua conta? y/n "); 
-     String confirmacao3 = sc.next();
-     if (confirmacao3.equalsIgnoreCase("y")) {
-      System.out.println("Insira o valor a ser retirado: ");
-      double valorSaque = sc.nextDouble();
-      acc.sacar(valorSaque);
-      System.out.println();
-      acc.dadosDaConta();
-     }
-    
+    }
+
     sc.close();
   }
 }

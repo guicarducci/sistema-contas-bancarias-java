@@ -15,9 +15,14 @@ public class Account {
     this.accountNumber = accountNumber;
     this.titular = titular;
   }
-
-  public void dadosDaConta () {
-     System.out.println("Conta: " + accountNumber + " | Titular: " + titular + " | Saldo: R$ " + saldo);
+  
+  public String toString() {
+    return "Conta: "
+    + accountNumber
+    + " | Titular: " 
+    + titular
+    + " | Saldo: R$ "
+    + String.format("%.2f", saldo);
   }
 
   public double saldoDaConta() {
@@ -27,14 +32,18 @@ public class Account {
    if (valor > 0) {
     saldo += valor;
    } else {
+    System.out.println();
     System.out.println("Valor de deposito invalido. ");
+    System.out.println();
    }
    }
   public void sacar(double valor) {
    if (saldo >= valor + 5.0) {
        saldo -= valor + 5.0;
    } else {
+    System.out.println();
     System.out.println("Saldo insuficiente para saque!");
+    System.out.println();
    }
   }
   public int getAccountNumber() {
